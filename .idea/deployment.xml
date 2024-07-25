@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root888@10.112.144.100:10922 password (4)" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="root888@10.112.144.100:10922 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root888@10.112.144.100:10922 password (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/root888/LC_low_attitude/PathlossPred_linux" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root888@10.112.144.100:10922 password (3)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/root888/LC_low_attitude/PathlossPred_linux" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root888@10.112.144.100:10922 password (4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/root888/LC_low_attitude/PathlossPred_linux" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
