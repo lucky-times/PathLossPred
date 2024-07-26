@@ -34,8 +34,8 @@ class customLoss(nn.Module):
         return mse + smoothing  # 0.1为正则化权重，可以调节
 
 
-def train_loop(args, dataloader, model, criterion, optimizer):# dataloader2,
-    progress_bar = tqdm(range(len(dataloader)), unit='batch', leave=True) #  + len(dataloader2)
+def train_loop(args, dataloader, model, criterion, optimizer):  # dataloader2,
+    progress_bar = tqdm(range(len(dataloader)), unit='batch', leave=True)  # + len(dataloader2)
     progress_bar.set_description('Progress bar:')
     total_loss = 0.
     model.train()
@@ -70,7 +70,7 @@ def train_loop(args, dataloader, model, criterion, optimizer):# dataloader2,
     #     progress_bar.update(1)
 
     progress_bar.close()
-    return total_loss / (len(dataloader)) # +len(dataloader2)
+    return total_loss / (len(dataloader))  # +len(dataloader2)
 
 
 def test_loop(args, dataloader, model, criterion, mode='Test'):
@@ -159,12 +159,12 @@ def test_loop(args, dataloader, model, criterion, mode='Test'):
     return total_loss
 
 
-def train(args, train_dataset, dev_dataset, model):# train2_dataset
+def train(args, train_dataset, dev_dataset, model):  # train2_dataset
     """ Train the model """
     train_dataloader = input.get_dataLoader(args, train_dataset, shuffle=False)
     # train2_dataloader = input.get_dataLoader(args, train2_dataset, shuffle=False)
     dev_dataloader = input.get_dataLoader(args, dev_dataset, shuffle=False)
-    t_total = (len(train_dataloader)) * args.num_train_epochs # +len(train2_dataloader)
+    t_total = (len(train_dataloader)) * args.num_train_epochs  # +len(train2_dataloader)
 
     # Prepare optimizer and schedule (linear warmup and decay)
     learning_rate = args.learning_rate
@@ -175,7 +175,7 @@ def train(args, train_dataset, dev_dataset, model):# train2_dataset
     criterion = customLoss()
     # Train!
     logger.info("***** Running training *****")
-    logger.info(f"Num examples - {len(train_dataloader)}") # +len(train2_dataloader)
+    logger.info(f"Num examples - {len(train_dataloader)}")  # +len(train2_dataloader)
     logger.info(f"Num Epochs - {args.num_train_epochs}")
     logger.info(f"Total optimization steps - {t_total}")
     with open(os.path.join(args.output_dir, 'args.txt'), 'wt') as f:
@@ -187,14 +187,14 @@ def train(args, train_dataset, dev_dataset, model):# train2_dataset
 
     for epoch in range(args.num_train_epochs):
         print(f"Epoch {epoch + 1}/{args.num_train_epochs}\n-------------------------------")
-        model.train()# 更改self.training为True
-        train_loss = train_loop(args, train_dataloader, model, criterion, optimizer) # , train2_dataloader
+        model.train()  # 更改self.training为True
+        train_loss = train_loop(args, train_dataloader, model, criterion, optimizer)  # , train2_dataloader
         if (epoch + 1) % 2 == 0:
             learning_rate *= args.learning_rate_decay_factor
             optimizer = optim.Adam(model.parameters(), lr=learning_rate)
         train_loss_per_epoch.append(train_loss)
 
-        model.eval()# 更改self.training为False
+        model.eval()  # 更改self.training为False
         test_loss = test_loop(args, dev_dataloader, model, criterion, mode='Valid')
         a = test_loss.cpu()
         test_loss_per_epoch.append(a.detach().numpy())
